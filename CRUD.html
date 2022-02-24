@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDoNotes</title>
+
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+     <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+    <input
+      type="text"
+      name=""
+      id="search"
+      onkeyup="filter()"
+      class="my-2 mx-10 p-2 rounded-xl w-80 bg-gray-50 border border-gray-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      placeholder="Search"
+    />
+
+    <div
+      id="grid"
+      class="grid sm: grid-cols-1 w-full lg:grid-cols-3 md:grid-cols-2 gap-1 my-20 shadow-black"
+    ></div>
+
+    <dialog
+      id="dialog"
+      class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full h-screen"
+    >
+      <div class="container mx-auto flex justify-centre w-1/4">
+        <div
+          id="form"
+          class="border border-solid border-gray-800 bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mb-4"
+        >
+          <form>
+            <h3 class="font-bold">Add Note</h3>
+            <br />
+
+            <input
+              id="title"
+              type="text"
+              required
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Title"
+            />
+            <br />
+
+            <textarea
+              id="description"
+              rows="4"
+              cols="50"
+              name="comment"
+              required
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Description"
+            ></textarea>
+            <br />
+
+            <label for="color">Color:</label>
+            <input
+              id="color"
+              type="color"
+              required
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+            <br />
+
+            <label for="date">Date:</label>
+            <input
+              id="date"
+              type="date"
+              required
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+            <br />
+
+            <button
+              onclick="addNotes(event)"
+              id="submit"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-full"
+            >
+              Submit
+            </button>
+
+            <button
+              id="update"
+              onclick="updateIt(editedValue)"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-full hidden"
+            >
+              update
+            </button>
+
+            <button
+              type="submit"
+              onclick="formClose()"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-full"
+            >
+              Close
+            </button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <button
+      onclick="display()"
+      class="fixed bottom-0 right-20 border border-gray-800 rounded-full p-6 my-20 mx-3 bg-blue-400 text-white"
+    >
+      +
+    </button>
+
+    <script src="CRUD.js"></script>
+
+  </body>
+</html>
